@@ -1,4 +1,4 @@
-# goatDemoUITests
+# Automated UI tests for Goat App
 Demo of XCUITests for the Goat sneaker app
 
 This is a demo for a log in and log out UI automated smoke test for Goat using XCUITest.
