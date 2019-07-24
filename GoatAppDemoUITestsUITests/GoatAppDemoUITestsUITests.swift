@@ -9,6 +9,7 @@
 import XCTest
 
 class GoatAppDemoUITestsUITests: XCTestCase {
+  let envVars  = ProcessInfo.processInfo.environment
   let goatApp = XCUIApplication(bundleIdentifier: "com.airgoat.goat.ios")
 
     override func setUp() {
@@ -32,12 +33,12 @@ class GoatAppDemoUITestsUITests: XCTestCase {
       // store the email text field to a variable
       let usernameField = goatApp/*@START_MENU_TOKEN@*/.textFields["LogIn.email.field"]/*[[".textFields[\"Username or Email\"]",".textFields[\"LogIn.email.field\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
       // type the email into the email field
-      usernameField.typeText("kinglouis.belmont@gmail.com")
+      usernameField.typeText(envVars["goatEmail"]!)
       // store the password field into a variable
       let passwordField = goatApp/*@START_MENU_TOKEN@*/.secureTextFields["LogIn.password.field"]/*[[".secureTextFields[\"Password\"]",".secureTextFields[\"LogIn.password.field\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
       passwordField.tap()
       // type the password into the password field
-      passwordField.typeText("Godfather100!!")
+      passwordField.typeText(envVars["goatPassword"]!)
       // click on the login/submit button
       goatApp/*@START_MENU_TOKEN@*/.buttons["LogIn.logIn.button"]/*[[".buttons[\"LOG IN\"]",".buttons[\"LogIn.logIn.button\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
       // assert that after logging in, we no longer see the email field
